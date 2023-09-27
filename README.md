@@ -1,0 +1,2 @@
+# Neural_Networks_learning_project
+該專案為學習類神經網路的內容筆記即實作
