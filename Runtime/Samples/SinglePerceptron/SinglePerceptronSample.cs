@@ -94,12 +94,12 @@ public class SinglePerceptronSample : VisualElement
             schedule.Execute(() => // Train
             {
                 Model.Train(train_x, train_y);
-                var acc = Model.Eval(trainDatas, labelDatas);
-                AccHistory.Add(acc);
-                if (acc >= earlyStopRateDrawer.value)
+                var his = Model.Eval(Model.Predict(trainDatas), labelDatas.ToArray());
+                AccHistory.Add(his.Acc);
+                if (his.Acc >= earlyStopRateDrawer.value)
                     endTrain = true;
                 updateModelGraph();
-                trainInfoVisual.text = $"epochs {ep+1}/{epochSettingsDrawer.value}\n\ntotal acc rate:\n   {acc}\n\ntrain acc rate:\n   {Model.Eval(train_x, train_y)}\n\nval acc rate:\n   {Model.Eval(val_x, val_y)}";
+                trainInfoVisual.text = $"epochs {ep+1}/{epochSettingsDrawer.value}\n\ntotal acc rate:\n   {his.Acc}\n\ntrain acc rate:\n   {Model.Eval(Model.Predict(train_x), train_y.ToArray()).Acc}\n\nval acc rate:\n   {Model.Eval(Model.Predict(val_x), val_y.ToArray()).Acc}";
                 ep++;
                 if (ep >= epochSettingsDrawer.value) endTrain = true;
                 if (endTrain)

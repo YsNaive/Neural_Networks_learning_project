@@ -5,60 +5,101 @@ using UnityEngine;
 using UnityEngine.Windows;
 
 [System.Serializable]
-public class SinglePerceptron
+public class SinglePerceptron : TrainableModel<float[], float>
 {
     public SinglePerceptron(int inputCount)
     {
         Neural = new Neural(inputCount);
     }
     public Neural Neural;
-    public float LearningRate = 0.01f;
     Func<float, float> ActivationFunc = ActivationFunction.Sgn;
-    public float Predict(float[] input)
+
+    public override float Predict(float[] input)
     {
         return ActivationFunc(Neural.Predict(input));
     }
 
-    // return acc rate
-    public float Eval(List<float[]> inputs, List<float> expectOutputs) {
-        int size = inputs.Count;
-        int acc = 0;
-        for(int i = 0; i < size; i++)
-        {
-            if (Predict(inputs[i]) == expectOutputs[i])
-                acc++;
-        }
-        return (float)acc / size;
-    }
-
-    public void Train(List<float[]> inputs, List<float> expectOutputs)
+    public override bool Train(float[] input, float label)
     {
-        int wrongCount = 0;
-        int size = inputs.Count;
-        for (int i=0; i < size; i++)
+        var pre = Predict(input);
+        if (ActivationFunc(pre) != label)
         {
-            var pre = Predict(inputs[i]);
-            //Debug.Log(pre + " vs "+ expectOutputs[i]);
-            if (ActivationFunc(pre) != expectOutputs[i])
+            if (pre < 0)
             {
-                wrongCount++;
-                if(pre < 0)
+                int jmax = Neural.Weights.Length;
+                for (int j = 0; j < jmax; j++)
                 {
-                    int jmax = Neural.Weights.Length;
-                    for (int j = 0; j < jmax; j++)
-                    {
-                        Neural.Weights[j] += inputs[i][j] * LearningRate;
-                    }
-                }
-                else
-                {
-                    int jmax = Neural.Weights.Length;
-                    for (int j = 0; j < jmax; j++)
-                    {
-                        Neural.Weights[j] -= inputs[i][j] * LearningRate;
-                    }
+                    Neural.Weights[j] += input[j] * LearningRate;
                 }
             }
+            else
+            {
+                int jmax = Neural.Weights.Length;
+                for (int j = 0; j < jmax; j++)
+                {
+                    Neural.Weights[j] -= input[j] * LearningRate;
+                }
+            }
+            return true;
         }
+        return false;
     }
+
+    public override ModelResult Eval(float[] predicts, float[] labels)
+    {
+        int size = predicts.Length;
+        int acc = 0;
+        for (int i = 0; i < size; i++)
+        {
+            if (predicts[i] == labels[i])
+                acc++;
+        }
+        ModelResult modelResult = new ModelResult();
+        modelResult.Acc = (float)acc / size;
+        return modelResult;
+    }
+
+
+    //// return acc rate
+    //public float Eval(List<float[]> inputs, List<float> expectOutputs) {
+    //    int size = inputs.Count;
+    //    int acc = 0;
+    //    for(int i = 0; i < size; i++)
+    //    {
+    //        if (Predict(inputs[i]) == expectOutputs[i])
+    //            acc++;
+    //    }
+    //    return (float)acc / size;
+    //}
+
+    //public void Train(List<float[]> inputs, List<float> expectOutputs)
+    //{
+    //    int wrongCount = 0;
+    //    int size = inputs.Count;
+    //    for (int i=0; i < size; i++)
+    //    {
+    //        var pre = Predict(inputs[i]);
+    //        //Debug.Log(pre + " vs "+ expectOutputs[i]);
+    //        if (ActivationFunc(pre) != expectOutputs[i])
+    //        {
+    //            wrongCount++;
+    //            if(pre < 0)
+    //            {
+    //                int jmax = Neural.Weights.Length;
+    //                for (int j = 0; j < jmax; j++)
+    //                {
+    //                    Neural.Weights[j] += inputs[i][j] * LearningRate;
+    //                }
+    //            }
+    //            else
+    //            {
+    //                int jmax = Neural.Weights.Length;
+    //                for (int j = 0; j < jmax; j++)
+    //                {
+    //                    Neural.Weights[j] -= inputs[i][j] * LearningRate;
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
 }
