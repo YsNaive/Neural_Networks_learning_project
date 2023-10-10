@@ -8,3 +8,14 @@ Unity 版本 2021.3.29f1
 - [DocumentBuilder](https://assetstore.unity.com/packages/tools/utilities/document-builder-240100)
 - RuntimeWindow (Not Release yet)
 
+# Implemented
+- 神經元 Neural
+
+## Model
+- 感知機 SinglePerceptron
+
+# In Procress
+- DNN model
+- LayerSystem
+  - Dense
+  - Dropout 
