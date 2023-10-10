@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 481528974}
   - component: {fileID: 481528976}
   - component: {fileID: 481528977}
+  - component: {fileID: 481528978}
   m_Layer: 0
   m_Name: UID
   m_TagString: Untagged
@@ -214,6 +215,53 @@ MonoBehaviour:
     elementName: UID-container
     typeName: UnityEngine.UIElements.VisualElement, UnityEngine.UIElementsModule,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &481528978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481528973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e482177d7322c04ebc8d118f0167698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Data: {fileID: 4900000, guid: 7ad9186b770a189418977d970e02bab0, type: 3}
+  DNN:
+    LearningRate: 0.01
+    Epochs: 81
+    Layers:
+    - Neurals:
+      - weights:
+        - -1
+        - 0
+        - 0
+      - weights:
+        - -1
+        - 0
+        - 0
+      - weights:
+        - -1
+        - 0
+        - 0
+      - weights:
+        - -1
+        - 0
+        - 0
+    - Neurals:
+      - weights:
+        - -1
+        - 0
+        - 0
+        - 0
+        - 0
+      - weights:
+        - -1
+        - 0
+        - 0
+        - 0
+        - 0
 --- !u!1 &2090490686
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d03f84ab4ec20274e86f91d6e2a30257, type: 3}
+  m_Name: Back-Propagation
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 2800000, guid: 3543eaffc785cee4a879a77c6b51fede, type: 3}
+  SubPages: []
+  Components:
+  - VisualID: 2
+    JsonData: '{"Type":4}'
+    TextData:
+    - all function with param n means value at train id n
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+  - VisualID: 3
+    JsonData: '{"row":15,"col":3,"anchors":[3,3,3],"mode":1}'
+    TextData:
+    - Symbol
+    - means
+    - relation
+    - N(j)
+    - Neural j
+    - 
+    - i, j, k
+    - 'N(i) at left of N(j)
+
+      N(k) at right of N(j)'
+    - 
+    - n
+    - train time
+    - 
+    - E(n)
+    - error
+    - sum(e(j, n)^2)/2
+    - e(j, n)
+    - error of N(j)
+    - d(j, n) - y(j, n)
+    - d(j, n)
+    - answer of N(j)
+    - 
+    - y(j, n)
+    - predict of N(j)
+    - 
+    - w(i, j)
+    - weight from N(i) to N(j)
+    - 
+    - dw(i, j, n)
+    - fit value for w(i, j)
+    - LR * gd(j, n) * y(i, n)
+    - v(j, n)
+    - active state of N(j)
+    - 
+    - a()
+    - activation function
+    - 
+    - x(j, n)
+    - input[j]
+    - 
+    - gd(j, n)
+    - gradient descent of j
+    - see below
+    - LR
+    - learning rate
+    - 
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+  - VisualID: 0
+    JsonData: 
+    TextData: []
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+  - VisualID: 2
+    JsonData: 
+    TextData:
+    - "if N(j) is in output layer\n\tgd(j, n) = (d(j, n) - y(j, n)) * y(j, n) * (1-y(j,
+      n))\nelse\n\tgd(j, n) = y(j, n) * (1-y(j, n)) * sum( gd(k, n) * w(j, k) )"
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+  IntroMode: 1
+  OuttroMode: 1
+  IntroDuration: 200
+  OuttroDuration: 200

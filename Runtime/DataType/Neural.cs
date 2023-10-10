@@ -24,16 +24,20 @@ public class Neural
     public float[] Weights => weights;
     [SerializeField] private float[] weights;
 
+    public float Predict(List<float> input) { return Predict(input.ToArray()); }
     public float Predict(float[] input)
     {
         int len = input.Length;
         if (len != Weights.Length)
             throw new InputLengthNotMatchException(len, Weights.Length);
 
-        float result = 0;
-        for(int i=0; i < len; i++)
+        float result = 0f;
+
+        for (int i=0; i < len; i++)
         {
+            float before = result;
             result += Weights[i] * input[i];
+            if (float.IsNaN(result)) result = before;
         }
         return result;
     }
