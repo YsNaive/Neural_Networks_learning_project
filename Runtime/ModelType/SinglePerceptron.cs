@@ -12,7 +12,7 @@ public class SinglePerceptron : TrainableModel<float[], float>
         Neural = new Neural(inputCount);
     }
     public Neural Neural;
-    Func<float, float> ActivationFunc = ActivationFunction.Sgn;
+    Func<float, float> ActivationFunc = (x) => (x > 0) ? 1 : -1;
 
     public override float Predict(float[] input)
     {

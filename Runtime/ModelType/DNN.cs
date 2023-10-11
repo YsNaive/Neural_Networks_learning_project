@@ -22,16 +22,16 @@ public class DNN : TrainableModel<List<float>, List<float>>
     public Dense[] Layers;
     public override ModelResult Eval(List<float>[] predicts, List<float>[] answers)
     {
-        int sum = 0;
-        for(int i=0,imax = predicts.Length; i < imax; i++)
-        {
-            if (ActivationFunction.Sgn(predicts[i][0]) != answers[i][0])
-            {
-                Debug.Log(predicts[i][0] + " vs " + answers[i][0]);
-                sum++;
-            }
-        }
-        Debug.Log(sum + " / " + predicts.Length);
+        //int sum = 0;
+        //for(int i=0,imax = predicts.Length; i < imax; i++)
+        //{
+        //    if (ActivationFunction.Sgn(predicts[i][0]) != answers[i][0])
+        //    {
+        //        Debug.Log(predicts[i][0] + " vs " + answers[i][0]);
+        //        sum++;
+        //    }
+        //}
+        //Debug.Log(sum + " / " + predicts.Length);
         return null;
     }
 
@@ -49,9 +49,8 @@ public class DNN : TrainableModel<List<float>, List<float>>
 
     public override bool Train(List<float> input, List<float> label)
     {
-        if(notrain)return false;
-        //if (MaxIndex(Predict(input)) == MaxIndex(label))
-        //    return false;
+        if (MaxIndex(Predict(input)) == MaxIndex(label))
+            return false;
         List<List<float>> predicts = new List<List<float>>();
         List<float> current = input;
         foreach(var layer in Layers)
@@ -79,7 +78,7 @@ public class DNN : TrainableModel<List<float>, List<float>>
                 float y = predicts[i][j+1];
                 if (isOutputLayer)
                 {
-                    gd = y * (label[j] - y);
+                    gd = (label[j] - y) * y*(1f-y);
                 }
                 else
                 {
@@ -88,7 +87,7 @@ public class DNN : TrainableModel<List<float>, List<float>>
                     {
                         sum += gdTable[new Vector2(i + 1, k)] * Layers[i + 1].Neurals[k].Weights[j];
                     }
-                    gd = y * sum;
+                    gd = sum * y * (1f - y);
                 }
                 gdTable.Add(new Vector2(i,j), gd);
                 //ebug.Log("gd " + i + " " + j + " = " + gd);
@@ -106,19 +105,11 @@ public class DNN : TrainableModel<List<float>, List<float>>
                 for (int k=0,kmax = Layers[i].Neurals[j].Weights.Length; k < kmax; k++)
                 {
                     Layers[i].Neurals[j].Weights[k] += dw * xs[k];
-                    if (float.IsNaN(dw * xs[k]))
-                    {
-                        Debug.Log($"{dw} * {xs[k]}");
-                        notrain = true;
-                        goto end;
-                    }
                 }
             }
         }
-        end:
         return true;
     }
-    bool notrain = false;
     public int MaxIndex(List<float> input)
     {
         int index = 0;

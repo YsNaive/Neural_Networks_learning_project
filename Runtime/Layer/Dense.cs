@@ -13,8 +13,7 @@ public class Dense : Layer
         for (int i = 0; i < neuralCount; i++)
             Neurals[i] = new Neural(inputDimension, bias);
     }
-    public Func<float, float> ActivationFunc = ActivationFunction.Sigmoid;
-    public Func<float, float> UnActivationFunc = ActivationFunction.UnSigmoid;
+    public ActivationFunction ActivationFunction = new Sigmoid();
     public Neural[] Neurals;
     private int inputDim;
     public int NeuralsCount => Neurals.Length;
@@ -26,7 +25,7 @@ public class Dense : Layer
         List<float> result = new List<float>();
         for(int i = 0,imax = NeuralsCount; i < imax; i++)
         {
-            result.Add(Neurals[i].Predict(input));
+            result.Add(ActivationFunction.Activation(Neurals[i].Predict(input)));
         }
         return result;
     }

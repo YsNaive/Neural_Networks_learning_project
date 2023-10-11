@@ -227,41 +227,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e482177d7322c04ebc8d118f0167698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Data: {fileID: 4900000, guid: 7ad9186b770a189418977d970e02bab0, type: 3}
+  Data: {fileID: 4900000, guid: 9f6e7e41a9cec4747be228d4fc51cf28, type: 3}
   DNN:
-    LearningRate: 0.01
-    Epochs: 81
+    LearningRate: 5
+    Epochs: 1000
     Layers:
     - Neurals:
       - weights:
         - -1
         - 0
-        - 0
+        - 1
       - weights:
         - -1
         - 0
-        - 0
+        - 1
       - weights:
         - -1
         - 0
-        - 0
+        - 1
       - weights:
         - -1
         - 0
-        - 0
+        - 1
     - Neurals:
       - weights:
         - -1
         - 0
         - 0
-        - 0
-        - 0
+        - 1
+        - 1
       - weights:
         - -1
         - 0
         - 0
-        - 0
-        - 0
+        - 1
+        - 1
 --- !u!1 &2090490686
 GameObject:
   m_ObjectHideFlags: 0
