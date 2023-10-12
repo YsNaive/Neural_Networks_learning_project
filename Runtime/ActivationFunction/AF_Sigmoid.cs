@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sigmoid : ActivationFunction
+public class AF_Sigmoid : ActivationFunction
 {
     public override float Activation(float x)
     {

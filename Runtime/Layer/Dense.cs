@@ -13,19 +13,21 @@ public class Dense : Layer
         for (int i = 0; i < neuralCount; i++)
             Neurals[i] = new Neural(inputDimension, bias);
     }
-    public ActivationFunction ActivationFunction = new Sigmoid();
+    public ActivationFunction ActivationFunction = new AF_ReLU();
     public Neural[] Neurals;
     private int inputDim;
     public int NeuralsCount => Neurals.Length;
-    public List<float> Predict(List<float> input)
+    public FloatVector Predict(FloatVector input, bool add_bias = false)
     {
-        if(input.Count != inputDim)
-            throw new InputLengthNotMatchException(input.Count, inputDim);
+        if(input.Length != inputDim)
+            throw new InputLengthNotMatchException(input.Length, inputDim);
 
-        List<float> result = new List<float>();
+        FloatVector result = new FloatVector(Neurals.Length + (add_bias ? 1 : 0));
+        int offset = (add_bias? 1 : 0);
+        if (add_bias) result[0] = -1f;
         for(int i = 0,imax = NeuralsCount; i < imax; i++)
         {
-            result.Add(ActivationFunction.Activation(Neurals[i].Predict(input)));
+            result[i + offset] = (ActivationFunction.Activation(Neurals[i].Predict(input)));
         }
         return result;
     }

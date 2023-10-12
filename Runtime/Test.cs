@@ -1,44 +1,40 @@
+using SFB;
 using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
+using System.IO;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Test : MonoBehaviour
 {
     public TextAsset Data;
-    public DNN DNN = new DNN(2 ,4, 2);
-
+    public OneHotDNN DNN = new OneHotDNN(2 ,4, 2);
+    public int epochs = 10;
 
     void Start()
     {
-        MultiDimensionDataReader reader = new MultiDimensionDataReader(Data.text,0.2f,false);
-        Debug.Log(reader.DataCount);
-        int i = 0;
-        foreach(var d in reader.Data_x)
-        {
-            Debug.Log(d +"\t\t"+ reader.Data_y[i++]);
-        }
-        //foreach (var item in Data.text.Split('\n'))
-        //{
-        //    var vals = item.Split(" ");
-        //    if (vals.Length != 3) continue;
-        //    var p = new Vector3(float.Parse(vals[0]), float.Parse(vals[1]), (int.Parse(vals[2]) == 1)? 1:-1);
-        //    x.Add(new List<float> { -1, ActivationFunction.Sigmoid(p.x), ActivationFunction.Sigmoid(p.y) });
-        //    y.Add((p.z == 1)? new List<float> { 1, 0 }: new List<float> { 0, 1 });
-        //}
-        //for(int i = 0; i < DNN.Epochs; i++)
-        //    DNN.Train(x, y);
-        //var pre = DNN.Predict(x);
-        //int correct = 0;
-        //for(int i=0,imax = pre.Length; i < imax; i++)
-        //{
-        //    Debug.Log(pre[i][0]+","+pre[i][1] + " vs " + new Vector2(y[i][0], y[i][1]));
-        //    if ((pre[i][0] > pre[i][1]) == (y[i][0]==1))
-        //    {
-        //        correct++;
-        //    }
-        //}
-        //Debug.Log(correct + "/" + pre.Length);
-        //Debug.Log(DNN.Predict(new List<float>() { 1, 1, 1, 1 })[0]);
+        var data = new MultiDimensionDataReader(Data.text, 0);
+        data.MinMaxNormalize();
+        FindAnyObjectByType<Data3DRenderer>().Render(data);
+        //var root = GetComponent<UIDocument>().rootVisualElement;
+        //VisualElement ve = new VisualElement();
+        //ve.style.width = 200;
+        //ve.style.height = 200;
+        //ve.style.position = Position.Absolute;
+        ////root.Add(ve);
+        //ModelHistoryPainter painter = new ModelHistoryPainter(50, 50);
+
+
+
+        //MultiDimensionDataReader reader = new MultiDimensionDataReader(Data.text,0.2f);
+
+        //ModelTrainer<FloatVector, FloatVector> trainer = new ModelTrainer<FloatVector, FloatVector>(DNN);
+        //trainer.Epochs = epochs;
+        //trainer.LearningRate = 0.0001f;
+        //trainer.TrainStepCallback += (his) => { Debug.Log(his); };
+        //trainer.Train(reader.Train_x, reader.Train_y, reader.Val_x, reader.Val_y);
+
+        //painter.DrawHistory(trainer.TrainHistory);
+        //ve.style.backgroundImage = painter.Texture;
     }
 }

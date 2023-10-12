@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Windows;
 
 [System.Serializable]
-public class SinglePerceptron : TrainableModel<float[], float>
+public class SinglePerceptron : TrainableModel<FloatVector, float>
 {
     public SinglePerceptron(int inputCount)
     {
@@ -14,12 +14,12 @@ public class SinglePerceptron : TrainableModel<float[], float>
     public Neural Neural;
     Func<float, float> ActivationFunc = (x) => (x > 0) ? 1 : -1;
 
-    public override float Predict(float[] input)
+    public override float Predict(FloatVector input)
     {
         return ActivationFunc(Neural.Predict(input));
     }
 
-    public override bool Train(float[] input, float label)
+    public override bool Train(FloatVector input, float label, float lr)
     {
         var pre = Predict(input);
         if (ActivationFunc(pre) != label)
@@ -29,7 +29,7 @@ public class SinglePerceptron : TrainableModel<float[], float>
                 int jmax = Neural.Weights.Length;
                 for (int j = 0; j < jmax; j++)
                 {
-                    Neural.Weights[j] += input[j] * LearningRate;
+                    Neural.Weights[j] += input[j] * lr;
                 }
             }
             else
@@ -37,7 +37,7 @@ public class SinglePerceptron : TrainableModel<float[], float>
                 int jmax = Neural.Weights.Length;
                 for (int j = 0; j < jmax; j++)
                 {
-                    Neural.Weights[j] -= input[j] * LearningRate;
+                    Neural.Weights[j] -= input[j] * lr;
                 }
             }
             return true;

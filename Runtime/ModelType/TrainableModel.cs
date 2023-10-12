@@ -6,11 +6,13 @@ using UnityEngine;
 
 [System.Serializable]
 public abstract class TrainableModel<Tin,Tout>
-    where Tout : new()
 {
-    public float LearningRate = 0.01f;
-    public int Epochs = 50;
-
+    public class Trainer : ModelTrainer<Tin, Tout>
+    {
+        public Trainer(TrainableModel<Tin, Tout> model) : base(model)
+        {
+        }
+    }
     public abstract Tout Predict(Tin input);
     public virtual Tout[] Predict(List<Tin> input) { return Predict(input.ToArray()); }
     public virtual Tout[] Predict(params Tin[] input)
@@ -24,22 +26,20 @@ public abstract class TrainableModel<Tin,Tout>
         return result;
     }
     // return T if this train effect the model
-    public abstract bool Train(Tin input, Tout label);
-    public virtual ModelResult Train(List<Tin> inputs, List<Tout> labels) { return Train(inputs.ToArray(), labels.ToArray()); }
-    public virtual ModelResult Train(Tin[] inputs, Tout[] labels)
+    public abstract bool Train(Tin input, Tout label, float lr);
+    public virtual ModelResult Train(List<Tin> inputs, List<Tout> labels, float lr) { return Train(inputs.ToArray(), labels.ToArray(), lr); }
+    public virtual ModelResult Train(Tin[] inputs, Tout[] labels, float lr)
     {
         int len = inputs.Length;
-        ModelResult result = new ModelResult();
         int effectCount = 0;
         for (int i = 0; i < len; i++)
         {
-            if(Train(inputs[i], labels[i]))
+            if(Train(inputs[i], labels[i], lr))
             {
                 effectCount++;
             }
         }
-        result.Acc = effectCount/(float)len;
-        return result;
+        return Eval(Predict(inputs),labels);
     }
     public abstract ModelResult Eval(Tout[] predicts, Tout[] answers);
 }

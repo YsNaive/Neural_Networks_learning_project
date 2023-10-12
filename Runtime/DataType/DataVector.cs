@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 using UnityEngine;
+using UnityEngine.Windows;
 
 [System.Serializable]
 public class FloatVector
@@ -46,7 +47,7 @@ public class FloatVector
         }
         return this;
     }
-    public FloatVector RandomInit(float min = 0f, float max = 1f)
+    public FloatVector RandomInit(float min = -1f, float max = 1f)
     {
         System.Random rng = new System.Random();
         float wid = max - min;
@@ -56,6 +57,23 @@ public class FloatVector
         }
         return this;
     }
+
+    public int IndexOfMaxValue()
+    {
+        if (this.Length == 0) return -1;
+        int index = 0;
+        float max = this[0];
+        for (int i = 1, imax = this.Length; i < imax; i++)
+        {
+            if (this[i] > max)
+            {
+                max = this[i];
+                index = i;
+            }
+        }
+        return index;
+    }
+
     private static void sizeCheck(FloatVector lhs, FloatVector rhs)
     {
         if (lhs.Length != rhs.Length)

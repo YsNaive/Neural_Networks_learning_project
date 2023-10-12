@@ -1,5 +1,6 @@
 using NaiveAPI.DocumentBuilder;
 using NaiveAPI.Runtime_Window;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,15 @@ public class MainUI : MonoBehaviour
     UIDocument UID;
     public VisualElement Root;
     public ScrollView ModeContainer;
+    float lastGcTime = 0;
+    private void Update()
+    {
+        if((Time.realtimeSinceStartup - lastGcTime) > 60)
+        {
+            lastGcTime = Time.realtimeSinceStartup;
+            GC.Collect();
+        }
+    }
     void Start()
     {
         Root = DocRuntime.NewEmpty();
@@ -27,19 +37,17 @@ public class MainUI : MonoBehaviour
 
         ModeContainer = DocRuntime.NewScrollView();
 
-        singlePerceptronSample = new SinglePerceptronSample(SinglePerceptronSampleDatas);
-
         Root.Add(selectModeDropdown());
         Root.Add(ModeContainer);
 
     }
 
-    SinglePerceptronSample singlePerceptronSample;
     public List<TextAsset> SinglePerceptronSampleDatas;
+    public TextAsset NumberData;
     StringDropdown selectModeDropdown()
     {
         StringDropdown dropdown = new StringDropdown("Mode");
-        var choices = new List<string> { "None", "SinglePerceptron" };
+        var choices = new List<string> { "None", "SinglePerceptron", "One-Hot DNN", "0~3 Number Predict" };
         var inspector = RuntimeWindow.GetWindow<RuntimeInspector>();
         dropdown.Choices = choices;
         dropdown.OnValueChanged += (newVal) =>
@@ -52,9 +60,22 @@ public class MainUI : MonoBehaviour
             }
             if (dropdown.Index == 1)
             {
-                ModeContainer.Add(singlePerceptronSample);
-                inspector.Target = singlePerceptronSample.Model;
+                var sample = new SinglePerceptronSample(SinglePerceptronSampleDatas);
+                ModeContainer.Add(sample);
+                inspector.Target = sample.Model;
                 return;
+            }
+            if(dropdown.Index == 2)
+            {
+                var sample = new OneHotDNNSample();
+                ModeContainer.Add(sample);
+                inspector.Target = sample.Model;
+            }
+            if (dropdown.Index == 3)
+            {
+                var sample = new FourNumberPredictSample(NumberData);
+                ModeContainer.Add(sample);
+                inspector.Target = null;
             }
         };
         dropdown.Index = 0;

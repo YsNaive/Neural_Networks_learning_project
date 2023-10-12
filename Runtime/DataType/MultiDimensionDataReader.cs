@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Numerics;
+using System.Text;
 using UnityEngine;
 
 public class MultiDimensionDataReader
@@ -12,6 +12,7 @@ public class MultiDimensionDataReader
     /// </summary>
     public MultiDimensionDataReader(string data, float val_split, bool add_bias = true)
     {
+        this.add_bias = add_bias;
         try
         {
             var datas = data.Split(new char[] { '\n' , '\r'});
@@ -46,7 +47,10 @@ public class MultiDimensionDataReader
                 }
                 for(int i=0,imax = DimensionX - offset; i < imax; i++)
                 {
-                    x[i + offset] = float.Parse(splitData[i]);
+                    var fval = float.Parse(splitData[i]);
+                    if(fval < min_x)min_x = fval;
+                    if(fval > max_x)max_x = fval;
+                    x[i + offset] = fval;
                 }
                 FloatVector y = new FloatVector(DimensionY).ZeroInit();
                 y[Label2Index[splitData[^1]]] = 1;
@@ -63,16 +67,23 @@ public class MultiDimensionDataReader
                     Train_y.Add(y);
                 }
             }
+            IsSuccess = true;
+            width_x = max_x - min_x;
         }
         catch
         {
-            throw new System.Exception("MultiDimensionDataReader Fail, please check the input format.");
         }
     }
+    public bool IsSuccess = false;
     private int m_dimensionX, m_dimensionY;
     public int DimensionX => m_dimensionX;
     public int DimensionY => m_dimensionY;
     public int DataCount => Data_x.Count;
+    public float Min_x => min_x;
+    public float Max_x => max_x;
+    private float min_x = float.MaxValue, max_x = float.MinValue;
+    private float width_x;
+    private bool add_bias;
     public Dictionary<string, int> Label2Index = new Dictionary<string, int>();
     public Dictionary<int, string> Index2Label = new Dictionary<int, string>();
     public List<FloatVector> Data_x = new List<FloatVector>();
@@ -81,4 +92,31 @@ public class MultiDimensionDataReader
     public List<FloatVector> Train_y = new List<FloatVector>();
     public List<FloatVector> Val_x = new List<FloatVector>();
     public List<FloatVector> Val_y = new List<FloatVector>();
+
+    public void MinMaxNormalize()
+    {
+        for(int i=0,imax = DataCount; i < imax; i++)
+        {
+            for (int j = add_bias?1:0, jmax = Data_x[i].Length; j < jmax; j++) 
+                Data_x[i][j] = (Data_x[i][j] - min_x) / width_x;
+        }
+    }
+    public float MinMaxNormalize(float x)
+    {
+        return (x - min_x) / width_x;
+    }
+    public float InverseMinMaxNormalize(float normalized_x)
+    {
+        return normalized_x * width_x + min_x;
+    }
+
+    public string Show()
+    {
+        StringBuilder sb = new StringBuilder();
+        for(int i=0,imax = DataCount; i < imax; i++)
+        {
+            sb.Append(Data_x[i]).Append(" , ").Append(Data_y[i]).Append('\n');
+        }
+        return sb.ToString();
+    }
 }

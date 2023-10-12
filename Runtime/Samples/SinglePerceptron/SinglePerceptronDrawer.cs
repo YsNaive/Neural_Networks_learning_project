@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 public class SinglePerceptronDrawer : RuntimeDrawer<SinglePerceptron>
 {
     public override bool Repaintable => true;
-    FloatDrawer[] drawers = new FloatDrawer[4];// bias, x1, x2, lr
+    FloatDrawer[] drawers = new FloatDrawer[3];// bias, x1, x2, lr
     public override void InitGUI(string label, VisualElement root)
     {
         Add(DocRuntime.NewTextElement("Perceptron"));
@@ -25,8 +25,6 @@ public class SinglePerceptronDrawer : RuntimeDrawer<SinglePerceptron>
             };
         }
             
-        drawers[3] = (FloatDrawer)CreateDrawer("LR", typeof(float));
-        drawers[3].OnValueChanged += () => { value.LearningRate = drawers[3].value; };
 
         foreach(var drawer in drawers)
             Add(drawer);
@@ -36,9 +34,8 @@ public class SinglePerceptronDrawer : RuntimeDrawer<SinglePerceptron>
 
     public override void Repaint()
     {
+        if (value == null) return;
         for (int i = 0; i < 3; i++)
             drawers[i].value = value.Neural.Weights[i];
-
-        drawers[3].value = value.LearningRate;
     }
 }
