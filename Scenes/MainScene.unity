@@ -186,6 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7498145d9fd819e4cb5c2bca3386bcb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DocsIcon: {fileID: 21300000, guid: 3b4a426ebf8f6c94cac65191a2817164, type: 3}
   SinglePerceptronSampleDatas:
   - {fileID: 4900000, guid: 757143fe3910db442b580e1c4b077a18, type: 3}
   - {fileID: 4900000, guid: 39f848c11edfb9e48ba3aeaeab4eac78, type: 3}
@@ -211,6 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39b4a42259e6004409732bdff0753ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DocsRoot: {fileID: 11400000, guid: 57b64a417446ac54aab3b430b392f8a7, type: 2}
   PreSetRoot:
     UIDocument: {fileID: 481528974}
     elementName: UID-container
@@ -404,7 +406,6 @@ GameObject:
   - component: {fileID: 1255039868}
   - component: {fileID: 1255039871}
   - component: {fileID: 1255039870}
-  - component: {fileID: 1255039869}
   m_Layer: 0
   m_Name: unit
   m_TagString: Untagged
@@ -427,19 +428,6 @@ Transform:
   m_Father: {fileID: 1705232223}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1255039869
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1255039867}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1255039870
 MeshRenderer:
   m_ObjectHideFlags: 0

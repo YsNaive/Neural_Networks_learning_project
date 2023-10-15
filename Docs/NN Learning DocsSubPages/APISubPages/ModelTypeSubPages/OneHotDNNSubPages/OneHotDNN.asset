@@ -10,21 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d03f84ab4ec20274e86f91d6e2a30257, type: 3}
-  m_Name: ModelResult
+  m_Name: OneHotDNN
   m_EditorClassIdentifier: 
-  Icon: {fileID: 2800000, guid: 77fc49cad09df0142a9bbebdffc823a5, type: 3}
+  Icon: {fileID: 2800000, guid: 116bd5b02a236df4d9e4d81f16c51c48, type: 3}
   SubPages: []
   Components:
   - VisualID: 1
-    JsonData: 
+    JsonData: '{"Level":3}'
     TextData:
-    - ModelResult
+    - Usage
     ObjsData: []
     AniSettings: 01000000fa00000001000000fa000000
   - VisualID: 2
     JsonData: 
     TextData:
-    - A data class to handle result from model, ex. train/val history
+    - 'constructor
+
+
+      layers format example :
+
+      - 3 dimension input
+
+      -
+      2 hidden layer
+
+      - 4 dimension output
+
+      -> ( 3, 8, 8, 4 )'
     ObjsData: []
     AniSettings: 01000000fa00000001000000fa000000
   - VisualID: 0
@@ -33,22 +45,17 @@ MonoBehaviour:
     ObjsData: []
     AniSettings: 01000000fa00000001000000fa000000
   - VisualID: 1
-    JsonData: 
+    JsonData: '{"Level":3}'
     TextData:
-    - Fields
+    - API
     ObjsData: []
     AniSettings: 01000000fa00000001000000fa000000
-  - VisualID: 3
-    JsonData: '{"row":3,"col":3,"anchors":[3,3,3],"mode":1}'
+  - VisualID: 4
+    JsonData: '{"Name":"OneHotDNN","Syntaxs":["public OneHotDNN OneHotDNN(params
+      int[] layers)"],"ReturnTypes":["OneHotDNN"],"Params":[{"ParamName":"layers","Type":"int[]"}],"isOn":false}'
     TextData:
-    - Type
-    - Name
-    - Usage
-    - float
-    - Loss
     - 
-    - float
-    - Acc
+    - include Input/Output layer
     - 
     ObjsData: []
     AniSettings: 01000000fa00000001000000fa000000

@@ -18,11 +18,11 @@ MonoBehaviour:
   - VisualID: 2
     JsonData: '{"Type":4}'
     TextData:
-    - all function with param n means value at train id n
+    - all function with param n means value at train step n
     ObjsData: []
     AniSettings: 01000000fa00000001000000fa000000
   - VisualID: 3
-    JsonData: '{"row":15,"col":3,"anchors":[3,3,3],"mode":1}'
+    JsonData: '{"row":16,"col":3,"anchors":[3,3,3],"mode":1}'
     TextData:
     - Symbol
     - means
@@ -49,6 +49,9 @@ MonoBehaviour:
     - 
     - y(j, n)
     - predict of N(j)
+    - 
+    - dy(j, n)
+    - differential of y(j, n)
     - 
     - w(i, j)
     - weight from N(i) to N(j)
@@ -81,8 +84,8 @@ MonoBehaviour:
   - VisualID: 2
     JsonData: 
     TextData:
-    - "if N(j) is in output layer\n\tgd(j, n) = (d(j, n) - y(j, n)) * y(j, n) * (1-y(j,
-      n))\nelse\n\tgd(j, n) = y(j, n) * (1-y(j, n)) * sum( gd(k, n) * w(j, k) )"
+    - "if N(j) is in output layer\n\tgd(j, n) = (d(j, n) - y(j, n)) * dy(j, n)\nelse\n\tgd(j,
+      n) = dy(j, n) * sum( gd(k, n) * w(j, k) )"
     ObjsData: []
     AniSettings: 01000000fa00000001000000fa000000
   IntroMode: 1

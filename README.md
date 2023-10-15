@@ -10,13 +10,17 @@ Unity 版本 2021.3.29f1
 - RuntimeWindow (Not Release yet)
 
 # Implemented
-- 神經元 Neural
-
+## Basic
+- Neural
+- Dense Layer
 ## Model
-- 感知機 SinglePerceptron
+- SinglePerceptron
+- OneHot DNN
+## ActivationFunction
+- None
+- Sigmoid
+- ReLU
 
 # In Procress
-- DNN model
 - LayerSystem
-  - Dense
   - Dropout 

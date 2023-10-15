@@ -10,22 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d03f84ab4ec20274e86f91d6e2a30257, type: 3}
-  m_Name: Neural
+  m_Name: ModelTrainer
   m_EditorClassIdentifier: 
   Icon: {fileID: 2800000, guid: 77fc49cad09df0142a9bbebdffc823a5, type: 3}
   SubPages:
-  - {fileID: 11400000, guid: c1f36c0ab67ac60429ced74be3e545ab, type: 2}
+  - {fileID: 11400000, guid: bba22e670e2e64c48b7a5d971361ecf5, type: 2}
+  - {fileID: 11400000, guid: 7e82e6b057ea0e24499d1bbde26a823c, type: 2}
+  - {fileID: 11400000, guid: 0aab2c840b73ec443b0ed5315f5bb7ff, type: 2}
   Components:
   - VisualID: 1
     JsonData: 
     TextData:
-    - Neural
+    - ModelTrainer<Tin,Tout>
     ObjsData: []
     AniSettings: 01000000fa00000001000000fa000000
   - VisualID: 2
     JsonData: 
     TextData:
-    - Represent a Neural
+    - use to train model with editable values
     ObjsData: []
     AniSettings: 01000000fa00000001000000fa000000
   - VisualID: 0
@@ -40,22 +42,54 @@ MonoBehaviour:
     ObjsData: []
     AniSettings: 01000000fa00000001000000fa000000
   - VisualID: 3
-    JsonData: '{"row":3,"col":5,"anchors":[3,3,4,4,3],"mode":1}'
+    JsonData: '{"row":2,"col":5,"anchors":[3,3,4,4,3],"mode":1}'
     TextData:
     - Type
     - Name
     - get
     - set
     - Usage
+    - TrainableModel<Tin, Tout>
+    - Model
+    - "\u25A0"
+    - "\u25A0"
+    - target model
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+  - VisualID: 0
+    JsonData: 
+    TextData: []
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+  - VisualID: 1
+    JsonData: 
+    TextData:
+    - Fields
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+  - VisualID: 3
+    JsonData: '{"row":7,"col":3,"anchors":[3,3,3],"mode":1}'
+    TextData:
+    - Type
+    - Name
+    - Usage
+    - int
+    - Epochs
+    - 
     - float
-    - Bias
-    - "\u25A0"
-    - "\u25A0"
-    - as Weights[0]
-    - float[]
-    - Weights
-    - "\u25A0"
-    - "\u25A1"
+    - LearningRate
+    - 
+    - float
+    - EarlyStopAcc
+    - 
+    - List<ModelResult>
+    - TrainHistory
+    - 
+    - List<ModelResult>
+    - ValHistory
+    - 
+    - event Action<ModelResult>
+    - TrainStepCallback
     - 
     ObjsData: []
     AniSettings: 01000000fa00000001000000fa000000
@@ -71,10 +105,13 @@ MonoBehaviour:
     ObjsData: []
     AniSettings: 01000000fa00000001000000fa000000
   - VisualID: 8
-    JsonData: '{"num":1}'
+    JsonData: '{"num":3}'
     TextData:
-    - Predict
+    - Reset
+    - Train
+    - CreateEditVisual
     ObjsData:
+    - {fileID: 2800000, guid: 7c96eb4a8f2b4ba48a012519285cd6ab, type: 3}
     - {fileID: 2800000, guid: 7c96eb4a8f2b4ba48a012519285cd6ab, type: 3}
     - {fileID: 2800000, guid: 7c96eb4a8f2b4ba48a012519285cd6ab, type: 3}
     AniSettings: 01000000fa00000001000000fa000000

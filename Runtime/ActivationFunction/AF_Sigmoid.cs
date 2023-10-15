@@ -14,9 +14,4 @@ public class AF_Sigmoid : ActivationFunction
     {
         return (activated_x * (1f - activated_x));
     }
-
-    public override float InverseActivation(float activated_x)
-    {
-        return (float)Math.Log(activated_x / (1d - activated_x));
-    }
 }

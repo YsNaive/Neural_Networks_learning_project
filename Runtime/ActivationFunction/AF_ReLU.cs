@@ -13,9 +13,4 @@ public class AF_ReLU : ActivationFunction
     {
         return ((activated_x > 0) ? 1 : 0);
     }
-
-    public override float InverseActivation(float activated_x)
-    {
-        return activated_x;
-    }
 }

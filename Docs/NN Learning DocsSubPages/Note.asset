@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d03f84ab4ec20274e86f91d6e2a30257, type: 3}
-  m_Name: NN Learning Docs
+  m_Name: Note
   m_EditorClassIdentifier: 
-  Icon: {fileID: 2800000, guid: 6e76c73f1f7c29d4ea14a1c2b9ae5fff, type: 3}
+  Icon: {fileID: 2800000, guid: 323fcf14a6a8bd1488a8e68098322f7a, type: 3}
   SubPages:
-  - {fileID: 11400000, guid: e9e046945d5cb04449a87d65564d5fb0, type: 2}
-  - {fileID: 11400000, guid: 1128b520ce617dd4c908aaf1e2083fda, type: 2}
+  - {fileID: 11400000, guid: dbc460f3b1a21e14da3ba84f1631a2e0, type: 2}
   Components: []
   IntroMode: 1
   OuttroMode: 1

@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 2800000, guid: 323fcf14a6a8bd1488a8e68098322f7a, type: 3}
   SubPages:
+  - {fileID: 11400000, guid: ca51dd134e0861c44b724bc914f8f599, type: 2}
   - {fileID: 11400000, guid: 97f5c78336663e545940ae7e8264fb35, type: 2}
+  - {fileID: 11400000, guid: 3d0d127ec57754e4cbf14dcd421f78fa, type: 2}
   - {fileID: 11400000, guid: 44172ee494392184aab636256be6d75e, type: 2}
+  - {fileID: 11400000, guid: 9fda6378fba28cc4495a0aa56371c3cc, type: 2}
   Components: []
   IntroMode: 1
   OuttroMode: 1

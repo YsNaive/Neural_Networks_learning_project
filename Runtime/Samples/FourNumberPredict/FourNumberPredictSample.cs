@@ -3,18 +3,19 @@ using NaiveAPI_UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class FourNumberPredictSample : VisualElement
 {
-    OneHotDNN model = new OneHotDNN(25, 4);
+    OneHotDNN model = new OneHotDNN(25, 7, 4);
     TextElement showResult;
     public FourNumberPredictSample(TextAsset data) {
         this.style.SetIS_Style(ISMargin.Pixel(15));
 
         var trainer = new OneHotDNN.Trainer(model);
-        trainer.LearningRate = 1;
+        trainer.LearningRate = 0.1f;
         trainer.Epochs = 1500;
         var reader = new MultiDimensionDataReader(data.text, 0, true);
         trainer.Train(reader.Data_x, reader.Data_y);
@@ -27,6 +28,24 @@ public class FourNumberPredictSample : VisualElement
         showResult.style.marginLeft = 30;
         hor.Add(showResult);
         Add(hor);
+        Button copyBtn = null;
+        copyBtn = DocRuntime.NewButton("Copy to ClipBoard", DocStyle.Current.HintColor, () =>
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            for (int i = 1; i < 26; i++)
+                stringBuilder.Append((int)input_x[i]).Append(' ');
+            GUIUtility.systemCopyBuffer = stringBuilder.ToString();
+            copyBtn.style.backgroundColor = DocStyle.Current.SuccessColor;
+            copyBtn.text = "Copied !";
+            copyBtn.schedule.Execute(() =>
+            {
+                copyBtn.style.backgroundColor = DocStyle.Current.HintColor;
+                copyBtn.text = "Copy to ClipBoard";
+            }).ExecuteLater(800);
+        });
+        copyBtn.style.width = 165;
+        copyBtn.style.marginTop = 15;
+        Add(copyBtn);
         input_x[0] = -1;
     }
     FloatVector input_x = new FloatVector(26);

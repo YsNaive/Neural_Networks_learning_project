@@ -10,73 +10,53 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d03f84ab4ec20274e86f91d6e2a30257, type: 3}
-  m_Name: Neural
+  m_Name: AF_None
   m_EditorClassIdentifier: 
   Icon: {fileID: 2800000, guid: 77fc49cad09df0142a9bbebdffc823a5, type: 3}
-  SubPages:
-  - {fileID: 11400000, guid: c1f36c0ab67ac60429ced74be3e545ab, type: 2}
+  SubPages: []
   Components:
   - VisualID: 1
     JsonData: 
     TextData:
-    - Neural
+    - None
     ObjsData: []
     AniSettings: 01000000fa00000001000000fa000000
-  - VisualID: 2
-    JsonData: 
-    TextData:
-    - Represent a Neural
-    ObjsData: []
-    AniSettings: 01000000fa00000001000000fa000000
-  - VisualID: 0
-    JsonData: 
+  - VisualID: 5
+    JsonData: '{"scale":1.5,"url":"","mode":1}'
     TextData: []
-    ObjsData: []
-    AniSettings: 01000000fa00000001000000fa000000
-  - VisualID: 1
-    JsonData: 
-    TextData:
-    - Properties
-    ObjsData: []
-    AniSettings: 01000000fa00000001000000fa000000
-  - VisualID: 3
-    JsonData: '{"row":3,"col":5,"anchors":[3,3,4,4,3],"mode":1}'
-    TextData:
-    - Type
-    - Name
-    - get
-    - set
-    - Usage
-    - float
-    - Bias
-    - "\u25A0"
-    - "\u25A0"
-    - as Weights[0]
-    - float[]
-    - Weights
-    - "\u25A0"
-    - "\u25A1"
-    - 
-    ObjsData: []
-    AniSettings: 01000000fa00000001000000fa000000
-  - VisualID: 0
-    JsonData: 
-    TextData: []
-    ObjsData: []
-    AniSettings: 01000000fa00000001000000fa000000
-  - VisualID: 1
-    JsonData: 
-    TextData:
-    - Methods
-    ObjsData: []
-    AniSettings: 01000000fa00000001000000fa000000
-  - VisualID: 8
-    JsonData: '{"num":1}'
-    TextData:
-    - Predict
     ObjsData:
-    - {fileID: 2800000, guid: 7c96eb4a8f2b4ba48a012519285cd6ab, type: 3}
-    - {fileID: 2800000, guid: 7c96eb4a8f2b4ba48a012519285cd6ab, type: 3}
+    - {fileID: 2800000, guid: 39bbf2cec0fc06041a16c8397a348eae, type: 3}
+    AniSettings: 01000000fa00000001000000fa000000
+  - VisualID: 0
+    JsonData: 
+    TextData: []
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+  - VisualID: 1
+    JsonData: 
+    TextData:
+    - Activation
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+  - VisualID: 7
+    JsonData: '{"MaxHeight":300,"LineHeightPercent":125}'
+    TextData:
+    - "    public override float Activation(float x)\r\n    {\r\n        return x;\n   
+      }"
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+  - VisualID: 1
+    JsonData: 
+    TextData:
+    - Differential
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+  - VisualID: 7
+    JsonData: '{"MaxHeight":300,"LineHeightPercent":125}'
+    TextData:
+    - "    public override float Differential(float activated_x)\r\n    {\r\n       
+      return 1;\n    }"
+    ObjsData: []
     AniSettings: 01000000fa00000001000000fa000000
   IntroMode: 1
   OuttroMode: 1

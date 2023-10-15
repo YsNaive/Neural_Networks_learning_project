@@ -10,22 +10,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d03f84ab4ec20274e86f91d6e2a30257, type: 3}
-  m_Name: Neural
+  m_Name: MinMaxNormalize
   m_EditorClassIdentifier: 
-  Icon: {fileID: 2800000, guid: 77fc49cad09df0142a9bbebdffc823a5, type: 3}
-  SubPages:
-  - {fileID: 11400000, guid: c1f36c0ab67ac60429ced74be3e545ab, type: 2}
+  Icon: {fileID: 2800000, guid: 116bd5b02a236df4d9e4d81f16c51c48, type: 3}
+  SubPages: []
   Components:
   - VisualID: 1
-    JsonData: 
+    JsonData: '{"Level":3}'
     TextData:
-    - Neural
+    - Usage
     ObjsData: []
     AniSettings: 01000000fa00000001000000fa000000
   - VisualID: 2
     JsonData: 
     TextData:
-    - Represent a Neural
+    - normalize with min max value
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+  - VisualID: 2
+    JsonData: '{"Type":3}'
+    TextData:
+    - 'Calling with no input will Normalize all datas
+
+      Calling with input only
+      return scaled value of input x'
     ObjsData: []
     AniSettings: 01000000fa00000001000000fa000000
   - VisualID: 0
@@ -34,49 +42,19 @@ MonoBehaviour:
     ObjsData: []
     AniSettings: 01000000fa00000001000000fa000000
   - VisualID: 1
-    JsonData: 
+    JsonData: '{"Level":3}'
     TextData:
-    - Properties
+    - API
     ObjsData: []
     AniSettings: 01000000fa00000001000000fa000000
-  - VisualID: 3
-    JsonData: '{"row":3,"col":5,"anchors":[3,3,4,4,3],"mode":1}'
+  - VisualID: 4
+    JsonData: '{"Name":"MinMaxNormalize","Syntaxs":["public void MinMaxNormalize()","public
+      float MinMaxNormalize(float x)"],"ReturnTypes":["float"],"Params":[{"ParamName":"x","Type":"float"}],"isOn":false}'
     TextData:
-    - Type
-    - Name
-    - get
-    - set
-    - Usage
-    - float
-    - Bias
-    - "\u25A0"
-    - "\u25A0"
-    - as Weights[0]
-    - float[]
-    - Weights
-    - "\u25A0"
-    - "\u25A1"
+    - 
+    - 
     - 
     ObjsData: []
-    AniSettings: 01000000fa00000001000000fa000000
-  - VisualID: 0
-    JsonData: 
-    TextData: []
-    ObjsData: []
-    AniSettings: 01000000fa00000001000000fa000000
-  - VisualID: 1
-    JsonData: 
-    TextData:
-    - Methods
-    ObjsData: []
-    AniSettings: 01000000fa00000001000000fa000000
-  - VisualID: 8
-    JsonData: '{"num":1}'
-    TextData:
-    - Predict
-    ObjsData:
-    - {fileID: 2800000, guid: 7c96eb4a8f2b4ba48a012519285cd6ab, type: 3}
-    - {fileID: 2800000, guid: 7c96eb4a8f2b4ba48a012519285cd6ab, type: 3}
     AniSettings: 01000000fa00000001000000fa000000
   IntroMode: 1
   OuttroMode: 1

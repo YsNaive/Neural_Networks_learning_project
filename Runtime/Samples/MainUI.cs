@@ -9,6 +9,7 @@ using UnityEngine.UIElements;
 public class MainUI : MonoBehaviour
 {
     UIDocument UID;
+    public Sprite DocsIcon;
     public VisualElement Root;
     public ScrollView ModeContainer;
     float lastGcTime = 0;
@@ -22,9 +23,10 @@ public class MainUI : MonoBehaviour
     }
     void Start()
     {
+        var UIDRoot = GetComponent<UIDocument>().rootVisualElement;
         Root = DocRuntime.NewEmpty();
-        GetComponent<UIDocument>().rootVisualElement.style.backgroundColor = DocStyle.Current.BackgroundColor;
-        GetComponent<UIDocument>().rootVisualElement.Add(Root);
+        UIDRoot.style.backgroundColor = DocStyle.Current.BackgroundColor;
+        UIDRoot.Add(Root);
         Root.style.height = Length.Percent(100);
         Root.style.width = Length.Percent(65);
 
@@ -40,6 +42,22 @@ public class MainUI : MonoBehaviour
         Root.Add(selectModeDropdown());
         Root.Add(ModeContainer);
 
+        var docsBtn = DocRuntime.NewEmpty();
+        docsBtn.RegisterCallback<PointerDownEvent>(e =>
+        {
+            docsBtn.schedule.Execute(() =>
+            {
+                RuntimeWindow.GetWindow<DocsWindow>();
+            }).ExecuteLater(50);
+        });
+        docsBtn.style.width = 40;
+        docsBtn.style.height = 40;
+        docsBtn.style.position = Position.Absolute;
+        docsBtn.style.right = 10;
+        docsBtn.style.bottom = 10;
+        docsBtn.style.backgroundColor = Color.clear;
+        docsBtn.style.backgroundImage = new StyleBackground(DocsIcon);
+        inspector.Add(docsBtn);
     }
 
     public List<TextAsset> SinglePerceptronSampleDatas;

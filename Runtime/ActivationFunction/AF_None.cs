@@ -13,9 +13,4 @@ public class AF_None : ActivationFunction
     {
         return 1;
     }
-
-    public override float InverseActivation(float activated_x)
-    {
-        return activated_x;
-    }
 }

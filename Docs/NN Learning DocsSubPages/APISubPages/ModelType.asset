@@ -15,6 +15,9 @@ MonoBehaviour:
   Icon: {fileID: 2800000, guid: 323fcf14a6a8bd1488a8e68098322f7a, type: 3}
   SubPages:
   - {fileID: 11400000, guid: b5a47e62b281f414291598a3c35bda11, type: 2}
+  - {fileID: 11400000, guid: 4bcc5d01ef9c4cb45ad218668e8676f1, type: 2}
+  - {fileID: 11400000, guid: 4adf3346b461d8f4690b11d88ac1e3f7, type: 2}
+  - {fileID: 11400000, guid: 55b737f84859e6847a5fbdc045c3b316, type: 2}
   Components: []
   IntroMode: 1
   OuttroMode: 1

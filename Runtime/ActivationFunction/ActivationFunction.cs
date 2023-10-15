@@ -6,6 +6,5 @@ using UnityEngine;
 public abstract class ActivationFunction
 {
     public abstract float Activation(float x);
-    public abstract float InverseActivation(float activated_x);
     public abstract float Differential(float activated_x);
 }
