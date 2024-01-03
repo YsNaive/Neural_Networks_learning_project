@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d03f84ab4ec20274e86f91d6e2a30257, type: 3}
+  m_Name: Sample
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 2800000, guid: 3543eaffc785cee4a879a77c6b51fede, type: 3}
+  SubPages: []
+  Components:
+  - VisualID: 2
+    JsonData: 
+    TextData:
+    - Given data below
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+    VisualVersion: 0
+  - VisualID: 3
+    JsonData: '{"row":7,"col":4,"anchors":[3,4,4,4],"mode":1}'
+    TextData:
+    - 
+    - x1
+    - x2
+    - d
+    - 1.
+    - -2
+    - -2
+    - 1
+    - 2.
+    - -2
+    - 2
+    - 1
+    - 3.
+    - 2
+    - -2
+    - 1
+    - 4.
+    - 2
+    - 2
+    - 0
+    - 5.
+    - 0
+    - 2
+    - 0
+    - 6.
+    - 2
+    - 0
+    - 0
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+    VisualVersion: 0
+  - VisualID: 2
+    JsonData: 
+    TextData:
+    - and the init value for the perceptron is
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+    VisualVersion: 0
+  - VisualID: 9
+    JsonData: '{"ChType":0,"ChHeightPx":80,"Contents":"\\begin{align}w_1 %26=%261\\\\w_2
+      %26=%26-1\\\\\\theta%26=%26-0.5\\\\\\mu%26=%260.5\\end{align}","Scale":1.0}'
+    TextData: []
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+    VisualVersion: 0
+  - VisualID: 0
+    JsonData: 
+    TextData: []
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+    VisualVersion: 0
+  - VisualID: 1
+    JsonData: 
+    TextData:
+    - Step1
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+    VisualVersion: 0
+  - VisualID: 9
+    JsonData: '{"ChType":0,"ChHeightPx":25,"Contents":"\\vec{x_1}\\cdot\\vec{w_1}=0.5\\rightarrow1
+      = d_1","Scale":1.0}'
+    TextData: []
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+    VisualVersion: 0
+  - VisualID: 9
+    JsonData: '{"ChType":0,"ChHeightPx":27,"Contents":"\\vec{x_2}\\cdot\\vec{w_2}=-3.5\\rightarrow-1
+      \\ \\ \\ne\\ \\  d_2","Scale":1.0}'
+    TextData: []
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+    VisualVersion: 0
+  - VisualID: 9
+    JsonData: '{"ChType":0,"ChHeightPx":25,"Contents":"e = d_2 - (-3.5) = 4.5","Scale":1.0}'
+    TextData: []
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+    VisualVersion: 0
+  IntroMode: 1
+  OuttroMode: 1
+  IntroDuration: 200
+  OuttroDuration: 200

@@ -15,8 +15,8 @@ public class DocsWindow : ToolbarWindow
         Resizeable = false;
         EnableToolbar = true;
         LayoutPercent = new Rect(0, 0, 100, 100);
-        var book = new DocBookVisual(RuntimeWindowManager.Instance.DocsRoot);
-        book.DontPlayAnimation = true;
-        Add(book);
+        //var book = new DocBookVisual(RuntimeWindowManager.Instance.DocsRoot);
+        //book.DontPlayAnimation = true;
+        //Add(book);
     }
 }

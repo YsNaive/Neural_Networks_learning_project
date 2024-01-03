@@ -18,19 +18,13 @@ public class MultiDimensionDataReader
             var datas = data.Split(new char[] { '\n' , '\r'});
             var dataSize = datas.Length;
             var splitDatas = new List<string[]>();
-            int yCount = 0;
+            int yCount = 1;
             foreach(var str in datas)
             {
                 if (string.IsNullOrEmpty(str)) continue;
                 var splitData = str.Split(" ");
                 splitDatas.Add(splitData);
                 var label = splitData[^1];
-                if (!Label2Index.ContainsKey(label))
-                {
-                    Label2Index.Add(label, yCount);
-                    Index2Label.Add(yCount, label);
-                    yCount++;
-                }
             }
             m_dimensionX = splitDatas[0].Length;
             if (!add_bias) m_dimensionX--;
@@ -52,8 +46,8 @@ public class MultiDimensionDataReader
                     if(fval > max_x)max_x = fval;
                     x[i + offset] = fval;
                 }
-                FloatVector y = new FloatVector(DimensionY).ZeroInit();
-                y[Label2Index[splitData[^1]]] = 1;
+                FloatVector y = new FloatVector(DimensionY);
+                y[0] = float.Parse(splitData[^1]);
                 Data_x.Add(x);
                 Data_y.Add(y);
                 if (rng.NextDouble() < val_split)
@@ -99,6 +93,7 @@ public class MultiDimensionDataReader
         {
             for (int j = add_bias?1:0, jmax = Data_x[i].Length; j < jmax; j++) 
                 Data_x[i][j] = (Data_x[i][j] - min_x) / width_x;
+            Data_y[i][0] = Data_y[i][0] / 40f;
         }
     }
     public float MinMaxNormalize(float x)

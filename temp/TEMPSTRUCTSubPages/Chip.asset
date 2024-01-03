@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d03f84ab4ec20274e86f91d6e2a30257, type: 3}
+  m_Name: Chip
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 2800000, guid: 77fc49cad09df0142a9bbebdffc823a5, type: 3}
+  SubPages:
+  - {fileID: 11400000, guid: bf6c2837ed6cb7f4e958aff1f0b80a6d, type: 2}
+  - {fileID: 11400000, guid: 2e219a509fee1fd4883c1f87114b5abd, type: 2}
+  - {fileID: 11400000, guid: d5951574411abcb418b75182c88b832e, type: 2}
+  - {fileID: 11400000, guid: 9106d5938d9c2e44281060f584b2eb27, type: 2}
+  Components: []
+  IntroMode: 1
+  OuttroMode: 1
+  IntroDuration: 200
+  OuttroDuration: 200

@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d03f84ab4ec20274e86f91d6e2a30257, type: 3}
+  m_Name: Description
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 2800000, guid: 3543eaffc785cee4a879a77c6b51fede, type: 3}
+  SubPages: []
+  Components:
+  - VisualID: 1
+    JsonData: 
+    TextData:
+    - Definition
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+    VisualVersion: 0
+  - VisualID: 2
+    JsonData: 
+    TextData:
+    - 'Perceptron is actually a single Neural with N inputs with 1 output, for every
+      input we mul it with a weight,
+
+      for example a 2 input Perceptron we have:'
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+    VisualVersion: 0
+  - VisualID: 3
+    JsonData: '{"row":3,"col":2,"anchors":[3,3],"mode":0}'
+    TextData:
+    - input
+    - bias, x1, x2
+    - weight
+    - w0, w1, w2
+    - output
+    - y
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+    VisualVersion: 0
+  - VisualID: 2
+    JsonData: 
+    TextData:
+    - 'and forward evaluate is:'
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+    VisualVersion: 0
+  - VisualID: 9
+    JsonData: '{"ChType":0,"ChHeightPx":25,"Contents":"y=(bias\\times w_1)+(x_1\\times
+      w_1)+(x_2\\times w_2)","Scale":1.0}'
+    TextData: []
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+    VisualVersion: 0
+  - VisualID: 2
+    JsonData: 
+    TextData:
+    - then make input and weight as 2 vector
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+    VisualVersion: 0
+  - VisualID: 9
+    JsonData: '{"ChType":0,"ChHeightPx":25,"Contents":"\\vec{x}=\\{bias,\\ x_1,\\
+      x_2,\\  \\dots\\ \\ x_n \\}","Scale":1.0}'
+    TextData: []
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+    VisualVersion: 0
+  - VisualID: 9
+    JsonData: '{"ChType":0,"ChHeightPx":25,"Contents":"\\vec{w}=\\{w_0,\\ w_1,\\
+      w_2,\\  \\dots\\ \\ w_n \\}","Scale":1.0}'
+    TextData: []
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+    VisualVersion: 0
+  - VisualID: 2
+    JsonData: 
+    TextData:
+    - finaly we can have
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+    VisualVersion: 0
+  - VisualID: 9
+    JsonData: '{"ChType":0,"ChHeightPx":25,"Contents":"y = \\vec{x}\\cdot\\vec{w}","Scale":1.0}'
+    TextData: []
+    ObjsData: []
+    AniSettings: 01000000fa00000001000000fa000000
+    VisualVersion: 0
+  IntroMode: 1
+  OuttroMode: 1
+  IntroDuration: 200
+  OuttroDuration: 200
